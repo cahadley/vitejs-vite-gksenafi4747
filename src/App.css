@@ -712,284 +712,135 @@ button,input,select{
   }
 }
 
+/* =========================================
+   COMPACT CHORE TILE LANDSCAPE PATCH
+   ========================================= */
 
-/* =========================================================
-   v5.5.26 FINAL HORIZONTAL DASHBOARD OVERRIDE
-   Complete final layout:
-   - Totals moved into left column above Grocery List
-   - Old full-width totals row hidden as safety
-   - Dog Care condensed
-   - Kids use 3 columns x 2 rows so every tile and Track button is visible
-   ========================================================= */
+@media screen and (orientation: landscape) {
 
-.left-column{
-  min-height:0;
-  display:flex;
-  flex-direction:column;
-  gap:6px;
-  overflow:hidden;
-}
-
-.sidebar-summary{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:6px;
-  width:100%;
-}
-
-.sidebar-stat{
-  min-width:0;
-  min-height:50px;
-  padding:6px;
-}
-
-/* Safety: hide old top totals row if an older HomeScreen somehow remains cached/rendered */
-.shell > .summary-grid{
-  display:none !important;
-}
-
-@media screen and (orientation: landscape){
-
-  body{
-    overflow:hidden;
+  /* Keep dashboard fixed, but allow kid/parent/report detail pages to scroll */
+  .page.scroll-page {
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 
-  .page{
-    height:100vh;
-    overflow:hidden;
-    padding:5px;
+  .scroll-page .shell {
+    height: auto;
+    min-height: 100vh;
   }
 
-  .shell{
-    height:100vh;
-    gap:4px;
+  /* Smaller overall spacing */
+  .shell {
+    gap: 4px;
   }
 
-  .header-grid{
-    grid-template-columns:1fr 1fr 1fr;
-    gap:4px;
+  .main-area {
+    gap: 4px;
   }
 
-  .header-card{
-    min-height:42px;
-    padding:5px 7px;
+  /* Compact dog care */
+  .dog-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
   }
 
-  .headline{
-    font-size:19px;
+  .dog-grid .mini-card {
+    padding: 5px;
   }
 
-  .header-value{
-    font-size:14px;
+  .mini-title {
+    font-size: 9px;
   }
 
-  .muted{
-    font-size:10px;
+  .mini-status {
+    font-size: 13px;
+    margin: 1px 0;
   }
 
-  .title-row{
-    min-height:38px;
+  .dog-grid .button {
+    min-height: 30px;
+    font-size: 11px;
+    padding: 4px 6px;
   }
 
-  .app-title{
-    font-size:28px;
+  /* More compact kid tiles on dashboard */
+  .kids-grid {
+    gap: 5px;
   }
 
-  .app-version{
-    font-size:11px;
+  .kid-tile {
+    padding: 6px;
+    gap: 4px;
   }
 
-  .dashboard{
-    flex:1;
-    min-height:0;
-    display:grid;
-    grid-template-columns:300px 1fr;
-    gap:5px;
-    overflow:hidden;
+  .kid-name {
+    font-size: 18px;
   }
 
-  .left-column{
-    min-height:0;
-    overflow:hidden;
-    gap:5px;
+  .quote {
+    font-size: 10px;
+    min-height: 14px;
   }
 
-  .sidebar-summary{
-    grid-template-columns:1fr 1fr;
-    gap:5px;
+  .metric {
+    padding: 5px;
   }
 
-  .sidebar-stat{
-    min-height:48px;
-    padding:5px;
+  .metric strong {
+    font-size: 18px;
   }
 
-  .sidebar-stat .muted{
-    font-size:9px;
+  .button {
+    min-height: 34px;
+    font-size: 12px;
+    padding: 5px 7px;
   }
 
-  .big-number{
-    font-size:25px;
+  .track {
+    min-height: 42px;
+    font-size: 16px;
   }
 
-  .grocery-card{
-    flex:1;
-    min-height:0;
-    height:auto;
-    padding:7px;
+  /* Compact chore selection screen */
+  .chore-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    padding-bottom: 24px;
   }
 
-  .grocery-form{
-    grid-template-columns:1fr;
-    gap:5px;
-    margin-bottom:5px;
+  .chore-tile {
+    min-height: 105px;
+    padding: 6px;
+    gap: 5px;
   }
 
-  .grocery-form .button{
-    width:100%;
+  .chore-name {
+    font-size: 15px;
+    line-height: 1.1;
   }
 
-  .input{
-    font-size:14px;
-    padding:9px;
+  .chore-tile .muted,
+  .chore-tile .tiny {
+    font-size: 10px;
   }
 
-  .suggestion{
-    font-size:12px;
-    padding:6px 8px;
+  .chore-tile .button {
+    min-height: 30px;
+    font-size: 11px;
+    padding: 4px 6px;
   }
 
-  .grocery-list{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:5px;
-    overflow:auto;
+  .kid-summary {
+    gap: 5px;
   }
 
-  .main-area{
-    min-height:0;
-    display:grid;
-    grid-template-rows:auto 1fr auto;
-    gap:4px;
-    overflow:hidden;
+  .kid-summary .metric {
+    padding: 6px;
   }
 
-  .dog-grid{
-    grid-template-columns:repeat(3,1fr);
-    gap:4px;
-  }
-
-  .dog-grid .mini-card{
-    padding:3px 5px;
-  }
-
-  .dog-grid .mini-title{
-    font-size:8px;
-  }
-
-  .dog-grid .mini-status{
-    font-size:11px;
-    margin:0;
-  }
-
-  .dog-grid .button{
-    min-height:24px;
-    font-size:10px;
-    padding:3px 5px;
-  }
-
-  .kids-grid{
-    flex:1;
-    min-height:0;
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    grid-template-rows:repeat(2,minmax(0,1fr));
-    gap:5px;
-    overflow:hidden;
-  }
-
-  .kid-tile{
-    min-height:0;
-    padding:6px;
-    gap:3px;
-    overflow:hidden;
-  }
-
-  .kid-name{
-    font-size:20px;
-  }
-
-  .quote{
-    font-size:9px;
-    line-height:1.1;
-    min-height:11px;
-  }
-
-  .pill{
-    font-size:8px;
-    padding:2px 5px;
-  }
-
-  .progress{
-    height:4px;
-  }
-
-  .tile-metrics{
-    gap:4px;
-  }
-
-  .metric{
-    padding:4px;
-    font-size:9px;
-  }
-
-  .metric strong{
-    font-size:16px;
-  }
-
-  .tile-actions{
-    grid-template-columns:1fr 1fr 1fr;
-    gap:4px;
-  }
-
-  .button{
-    min-height:30px;
-    font-size:11px;
-    padding:4px 6px;
-  }
-
-  .track{
-    min-height:38px;
-    font-size:15px;
-    flex:0 0 auto;
-  }
-
-  .weather-main{
-    min-height:34px;
-    font-size:12px;
-    padding:6px 8px;
-  }
-
-  .section-title{
-    font-size:13px;
-    margin-bottom:3px;
+  .kid-summary .metric strong {
+    font-size: 20px;
   }
 }
 
-/* Keep portrait usable after final changes */
-@media screen and (max-aspect-ratio: 3/4){
-
-  .left-column{
-    gap:4px;
-  }
-
-  .sidebar-summary{
-    grid-template-columns:1fr 1fr;
-    gap:4px;
-  }
-
-  .sidebar-stat{
-    min-height:44px;
-    padding:5px;
-  }
-}
